@@ -21,7 +21,8 @@ const people = [
 ];
 
 // 1. Filter the list of inventors for those who were born in the 1500's
-const newArray = inventors.map(oldYear);
+// filter() 메서드는 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환합니다.
+const newArray = inventors.filter(oldYear);
 function oldYear(element){
     return element.year >= 1500;
 }
@@ -29,23 +30,40 @@ function oldYear(element){
 
 // 2. Give us an array of the inventors first and last names
 
-const getName = inventors.filter(getFirstLast);
-function getFirstLast(element){
-    return element.first && element.last;
-}
-//console.log(getName);
+inventors.map((x) => console.log(x.first + x.last)); 
+// map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.
 
 // 3. Sort the inventors by birthdate, oldest to youngest
 
-const asc = inventors.sort((a,b) => a.year - b.year);
+const asc = inventors.sort(sortYear);
+function sortYear(a,b){
+    return a.year - b.year;
+}
 console.log(asc);
 
 // 4. How many years did all the inventors live all together?
 
+inventors.map((x) => console.log(x.passed - x.year)); 
+
 // 5. Sort the inventors by years lived
+const crlYear = inventors.map(sortByYear);
+
+function sortByYear(x){
+    return x.passed - x.year;
+}
+const sortYoung = crlYear.sort((a,b) => a - b);
+console.log(sortYoung);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+// Write In the https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris page console.
+
+const container = document.querySelector('.mw-category');
+const a = Array.from(container.querySelectorAll('a'));
+const de = a.map(like => like.textContent);
 
 // 7. sort Exercise
 
 // 8. Reduce Exercise
+// Sum up the instances of each of these
+const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];

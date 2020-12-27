@@ -26,15 +26,15 @@ const newArray = inventors.filter(oldYear);
 function oldYear(element){
     return element.year >= 1500;
 }
-//console.log(newArray);
+console.log(newArray);
 
 // 2. Give us an array of the inventors first and last names
 
-inventors.map((x) => console.log(x.first + x.last)); 
+inventors.map((x) => console.log(x.first + x.last));  */
 // map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.
 
 // 3. Sort the inventors by birthdate, oldest to youngest
-
+ 
 const asc = inventors.sort(sortYear);
 function sortYear(a,b){
     return a.year - b.year;
@@ -42,7 +42,7 @@ function sortYear(a,b){
 console.log(asc);
 
 // 4. How many years did all the inventors live all together?
-
+ 
 inventors.map((x) => console.log(x.passed - x.year)); 
 
 // 5. Sort the inventors by years lived
@@ -63,7 +63,38 @@ const a = Array.from(container.querySelectorAll('a'));
 const de = a.map(like => like.textContent);
 
 // 7. sort Exercise
+// Sort the people alphabetically by last name
+
+const sorting = inventors.map(sortByLast);
+
+function sortByLast(a){
+    return a.last;
+}
+const result = sorting.sort(sortingAlpha);
+function sortingAlpha(a ,b){
+    if(a > b){
+        return -1;
+    }
+    else if(a < b){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+console.log(result.reverse());
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+const newResult = data.reduce((prev, curr) => {
+    if(!prev[curr]){
+        prev[curr] = 0;
+    }
+    console.log(prev[curr]);
+    prev[curr]++;
+    return prev
+},{});
+
+console.log(newResult);
